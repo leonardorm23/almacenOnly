@@ -3,10 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { HomeComponent } from './components/home/home.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
+import { PayGateComponent } from './components/pay-gate/pay-gate.component';
+import { StoreComponent } from './components/store/store.component';
+import { UserClientComponent } from './components/user-client/user-client.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutUsComponent,
+    AdminDashboardComponent,
+    CartComponent,
+    ContactComponent,
+    HomeComponent,
+    MyAccountComponent,
+    PayGateComponent,
+    StoreComponent,
+    UserClientComponent,
+    
   ],
   imports: [
     BrowserModule,
