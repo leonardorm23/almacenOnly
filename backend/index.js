@@ -9,6 +9,7 @@ let app = express();
 
 // Routes
 let User = require("./routes/user");
+let Product = require("./routes/product");
 
 // Database connection
 mongoose.connect(
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
 });
 // Routes API's
 app.use("/api", User);
+app.user("./api", Product);
 
 // Export module
 module.exports = app;
