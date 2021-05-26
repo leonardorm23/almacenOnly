@@ -15,7 +15,6 @@ const APP_ROUTES: Routes = [
     { path: 'myAccount', component: MyAccountComponent  },
     { path: 'cart', component: CartComponent  },
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
-
 ];
 
 
