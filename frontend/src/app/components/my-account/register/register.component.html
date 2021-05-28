@@ -1,74 +1,89 @@
 <h3>Register User</h3>
-        <form>
-        <div class="form-content">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Your Name"
-                  value=""
-                  name="names"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Last Name"
-                  value=""
-                  name="lastName"
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input
-                  type="number"
-                  class="form-control"
-                  placeholder="Your Age"
-                  value=""
-                  name="age"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Your email"
-                  value=""
-                  name="email"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Your Password"
-                  value=""
-                  name="pass"
-                />
-              </div>
-              <div class="form-group">
-                <label for="selectRole">Select Role</label>
-                <select class="form-control" name="selectRole" id="selectRole">
-                  <option value="admin">Admin</option>
-                  <option value="user">User</option>
-                </select>
-              </div>
-              <div class="form-group">
-                  <label for="dateReg">Please select Today's date</label>
-                <input
-                  type="date"
-                  class="form-control"
-                  value=""
-                  name="dateReg"
-                />
-              </div>
-            </div>
-          </div>
-          <button type="button" class="btnSubmit">Submit</button>
+<form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+  <div class="form-content">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Your Name"
+            value=""
+            #names="ngModel"
+            name="names"
+            [(ngModel)]="user.names"
+            required
+          />
         </div>
-  </form>
-
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Last Name"
+            value=""
+            #lastName="ngModel"
+            name="lastName"
+            [(ngModel)]="user.lastName"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Your Age"
+            value=""
+            #age="ngModel"
+            name="age"
+            [(ngModel)]="user.age"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Your email"
+            value=""
+            #email="ngModel"
+            name="email"
+            [(ngModel)]="user.email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Your Password"
+            value=""
+            #pass="ngModel"
+            name="pass"
+            [(ngModel)]="user.pass"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="role">Select Role</label>
+          <select
+            class="form-control"
+            #role="ngModel"
+            name="role"
+            [(ngModel)]="user.role"
+            required
+          >
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="dateReg">Please select Today's date</label>
+          <input type="date" class="form-control" name="dateReg" />
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btnSubmit">Submit</button>
+  </div>
+</form>
