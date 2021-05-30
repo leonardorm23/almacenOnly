@@ -7,6 +7,8 @@ let port = process.env.PORT || 3001;
 let app = express();
 
 let User = require("./routes/user");
+let Product = require("./routes/product");
+let Category = require("./routes/category");
 
 mongoose.connect(
   "mongodb://localhost:27017/almacenonly",
@@ -23,6 +25,10 @@ mongoose.connect(
   }
 );
 
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 app.use((req, res, next) => {
   console.log(req);
   res.header("Content-Type: application/json");
@@ -36,9 +42,16 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+
 
 app.use("/api", User);
+app.use("/api",Product);
+app.use("/api",Category);
 
 module.exports = app;
+
+
+
+
+
+

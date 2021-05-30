@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'; 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 //routes
 import { APP_ROUTING } from "./app.routes";
 
@@ -17,6 +18,15 @@ import { StoreComponent } from './components/store/store.component';
 import { UserClientComponent } from './components/user-client/user-client.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { CardProductComponent } from './components/card-product/card-product.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ListProductComponent } from './components/list-product/list-product.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+
+
+
+
 
 
 @NgModule({
@@ -33,12 +43,22 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     UserClientComponent,
     HeaderComponent,
     FooterComponent,
+    CardProductComponent,
+    SidebarComponent,
+    ListProductComponent,
+    CreateProductComponent,
+    EditProductComponent,
+    
+    
+    
+    
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     APP_ROUTING
   ],
   providers: [],

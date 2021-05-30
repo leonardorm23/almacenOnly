@@ -1,23 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit   } from '@angular/core';
+
 import {ProductService } from '../../services/product.service';
 import { global } from '../../services/GLOBAL';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-card-product',
+  templateUrl: './card-product.component.html',
+  styleUrls: ['./card-product.component.css']
 })
-export class HomeComponent implements OnInit {
+export class CardProductComponent implements OnInit {
 
-  public  product: any;
- 
+
+  //@Input() product : any;
+
+ public  product: any;
+ // public product : any;
   public url: any;
+  //data: Product1[] ;
   
 
-  constructor( private productService: ProductService) { 
+  constructor( private productService: ProductService ) { 
     this.url = global.url;
   }
+
 
   ngOnInit(): void {
     this.productService.listaProduct('').subscribe(
