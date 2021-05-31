@@ -15,7 +15,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent  },
-    { path: 'store', component: CardProductComponent  },
+    { path: 'store', component: StoreComponent  },
     { path: 'dashboard', component: AdminDashboardComponent  },
   
     { path: 'aboutUs', component: AboutUsComponent  },

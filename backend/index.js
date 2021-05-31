@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-  console.log(req);
+ 
   res.header("Content-Type: application/json");
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
