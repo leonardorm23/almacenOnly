@@ -1,14 +1,14 @@
- // Import express
+// Import Express
 let express = require("express");
-// Import Controller for User
+// Import user controller
 let User = require("../controllers/user");
 
 // Create the API
 let api = express.Router();
 
-// Post service to register
+// Create POST service (register) for http://Localhost:3001/
 api.post("/user/registerUser", User.registerUser);
-// Post service to Login
+// Create Login service
 api.post("/login", User.login);
 
 // Export the module

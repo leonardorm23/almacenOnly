@@ -1,0 +1,52 @@
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <h1 class="h3 mb-3 fw-normal">Existing User</h1>
+      <div
+        *ngIf="errors"
+        class="alert alert-danger alert-dismissible"
+        role="alert"
+      >
+        <div class="alert-message">
+          {{ errors }}
+        </div>
+        <button
+          type="button"
+          (click)="endError()"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span area-hidden="true">X</span>
+        </button>
+      </div>
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          #email="ngModel"
+          name="email"
+          [(ngModel)]="user.email"
+          required
+        />
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+          #pass="ngModel"
+          name="pass"
+          [(ngModel)]="user.pass"
+          required
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+  
+      <div class="checkbox mb-3">
+        <label> <input type="checkbox" value="remember-me" /> Remember me </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>

@@ -1,63 +1,63 @@
 // Import variable from models subido
 let User = require("../models/user");
-// Variable to encrypt passwords
+// Declare variable to import ecnrypted password lib
 let bcrypt = require("bcrypt-nodejs");
 // Import JWT
 let jwt = require("../libs/jwt");
 
-// Function to register a new user
+// Function to register a user
 const registerUser = (req, res) => {
-  // Import JSON data
+  // Pull the parameters from the json Body (incoming API)
   let params = req.body;
-  // Create a clean user model
+  // Use the user model (but must be clean)
   let user = new User();
+  // validate password in order to ecnrypt
   if (
     params.names &&
     params.lastName &&
+    params.age &&
     params.email &&
     params.pass &&
-    params.role &&
-    params.address &&
-    params.phoneNumber &&
-    params.registerDate
+    params.role
   ) {
+    // Use the bcrypt in order to encrypt the password
     bcrypt.hash(params.pass, null, null, function (err, hash) {
-      // If it encrypts, hash works
+      // If it encrypts the Hash worked
       if (hash) {
         user.names = params.names;
         user.lastName = params.lastName;
+        user.age = params.age;
         user.email = params.email;
         user.pass = hash;
         user.role = params.role;
-        user.address = params.address;
-        user.phoneNumber = params.phoneNumber;
-        user.registerDate = params.registerDate
-        // Register with MongoDB
-        user.save((err, saveUser) => {
+        // Send the model to register with Mongo
+        user.save((err, savedUser) => {
           if (err) {
+            //if there is an error
             res.status(500).send({ err: "The User was not registered" });
           } else {
-            res.status(200).send({ user: saveUser });
+            res.status(200).send({ user: savedUser });
           }
         });
       } else {
-        // Provide response if encryption fails
+        // Give response to the incoming ecrypt error if it happens
         res
           .status(400)
-          .send({ err: "Could not encrypt password, cannot register User" });
+          .send({ err: "Could not encrypt password, Did not register user" });
       }
     });
   } else {
-    // Validate incoming JSON data
-    res.status(405).send({ err: "Fields are incomplete" });
+    // Validate the incoming json data
+    res.status(405).send({ err: "Field are missing!" });
   }
 };
 
-// Login Function
+// Login
 const login = (req, res) => {
+  // Incoming parameter variable
   let params = req.body;
-  // Search for user in DB
-  User.findOne({ names: params.names }, (err, userData) => {
+  // Search for User in DB
+  User.findOne({ email: params.email }, (err, userData) => {
     if (err) {
       res.status(500).send({ message: "Server Error" });
     } else {
@@ -65,21 +65,25 @@ const login = (req, res) => {
         bcrypt.compare(params.pass, userData.pass, function (err, confirm) {
           if (confirm) {
             if (params.getToken) {
-              res.status(200).send({ jwt: jwt.createToken(userData) });
+              res.status(200).send({
+                jwt: jwt.createToken(userData),
+                user: userData,
+              });
             } else {
-              res.status(200).send({ User: userData, message: "No Token!" });
+              res.status(200).send({ User: userData, message: "No Token" });
             }
           } else {
-            res.status(401).send({ message: "Name or Password Incorrect" });
+            res.status(401).send({ message: "Email or Password incorrect" });
           }
         });
       } else {
-        res.status(401).send({ message: "Name or Password Incorrect" });
+        res.status(401).send({ message: "Email or Password incorrect" });
       }
     }
   });
 };
-// Export the module
+
+// Export module
 module.exports = {
   registerUser,
   login,
