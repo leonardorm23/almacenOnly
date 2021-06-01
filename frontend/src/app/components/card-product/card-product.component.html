@@ -1,5 +1,5 @@
  
-<h1>card</h1>
+
  
 
 
@@ -7,27 +7,31 @@
 
       
 
-
-          <div class="row row-cols-1  row-cols-md-3 g-4">
-            <div div class="card h-100"  class="card animated fadeIn fast" *ngFor="let item of product" >
-              <div  class="container">
-              <img class="card-img-top" [src]=" url + 'product/img/' + item.image" [alt]="item.name"  >  
-  
-              <div class="card-body">
-                <p class="card-title"> {{ item.name }} </p>
-                <p class="card-text"> {{ item.description }} </p>
-                <div class="d-flex justify-content-between align-items-center"></div>
-                <small class="text-muted">Precio $ {{ item.price }} </small>
-              </div>
-                
-              <div >
-               <button type="button" class="btn btn btn-outline-primary">Mas Informacion</button>
-               <button type="button" class="btn btn btn-outline-primary">Agregar al carrito</button>
-             </div>
-            </div>
-            </div>
-            </div>
+        <div class="container">
           
+          <div class="row row-cols-1  row-cols-md-4 g-4" >
+            <div div class="col"  class="card animated fadeIn fast" *ngFor="let item of product" class="espacio" >
+              <div  class="card h-100" >
+                <img class="card-img-top" [src]=" url + 'product/img/' + item.image" [alt]="item.name" >  
+                <div class="card-body">
+                   <h5 class="card-title"> {{ item.name }} </h5>
+                   <h5 class="card-text"> {{ item.description }} </h5>
+                   <small class="text-muted">Precio $ {{ item.price }} </small>
+                <div >
+                 
+                </div>
+              </div>
+              <button type="button" class=" btn btn-outline-primary btn-block">Mas Info....</button>
+              <button type="button" class=" btn btn-outline-primary btn-block">Ir al carrito</button>
+            </div>
+          </div>
+                 
+    
+                
+               
+                
+                
+
                 
             
                  
