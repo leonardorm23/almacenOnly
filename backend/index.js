@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 
 
 
-app.use("/api", User);
+
 app.use("/api",Product);
 app.use("/api",Category);
 
