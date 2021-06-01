@@ -8,6 +8,7 @@ let app = express();
 
 let Product = require("./routes/product");
 let Category = require("./routes/category");
+let User = require("./routes/user");
 
 mongoose.connect(
   "mongodb://localhost:27017/almacenonly",
@@ -24,21 +25,30 @@ mongoose.connect(
   }
 );
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
-app.use((req,res,next)=>{
-  res.header('Content-Type: application/json');
-  res.header('Access-Control-Allow-Origin','*'); 
-  res.header('Access-Control-Allow-Headers','Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Access-Control-Allow-Request-Method');
-  res.header('Access-Control-Allow-Methods','GET, PUT, POST, DELETE, OPTIONS');
-  res.header('Allow','GET, PUT, POST, DELETE, OPTIONS');
+
+
+
+
+app.use((req, res, next) => {
+  console.log(req);
+  res.header("Content-Type: application/json");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Access-Control-Allow-Request-Method"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
+  res.header("Allow", "GET, PUT, POST, DELETE, OPTIONS");
   next();
 });
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 
 
+app.use("/api", User);
 app.use("/api",Product);
 app.use("/api",Category);
 

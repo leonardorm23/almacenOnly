@@ -27,8 +27,6 @@ const APP_ROUTES: Routes = [
     { path: 'product/editproduct/:id', component: EditProductComponent  },
 
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
-
-
 ];
 
 
