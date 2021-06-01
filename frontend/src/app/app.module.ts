@@ -23,10 +23,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ListProductComponent } from './components/list-product/list-product.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
-
-
-
-
+import { LoginComponent } from './components/my-account/login/login.component';
+import { RegisterComponent } from './components/my-account/register/register.component';
 
 
 @NgModule({
@@ -48,11 +46,8 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
     ListProductComponent,
     CreateProductComponent,
     EditProductComponent,
-    
-    
-    
-    
-    
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

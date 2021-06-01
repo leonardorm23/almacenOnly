@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';  
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { StoreComponent } from './components/store/store.component' ;
 import { AboutUsComponent } from './components/about-us/about-us.component' ;
@@ -10,6 +10,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { ListProductComponent } from './components/list-product/list-product.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { LoginComponent } from './components/my-account/login/login.component';
 
 
 
@@ -26,10 +27,9 @@ const APP_ROUTES: Routes = [
     { path: 'product', component: ListProductComponent  },
     { path: 'product/createproduct', component: CreateProductComponent  },
     { path: 'product/editproduct/:id', component: EditProductComponent  },
+    {path: 'login', component: LoginComponent},
 
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 
-
-
-export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES , {useHash:true});
+export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES, { useHash: true });
