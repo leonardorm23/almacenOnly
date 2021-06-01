@@ -26,8 +26,11 @@ mongoose.connect(
 );
 
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 app.use((req, res, next) => {
-  console.log(req);
+ 
   res.header("Content-Type: application/json");
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -39,8 +42,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 
 
@@ -49,3 +50,9 @@ app.use("/api",Product);
 app.use("/api",Category);
 
 module.exports = app;
+
+
+
+
+
+
