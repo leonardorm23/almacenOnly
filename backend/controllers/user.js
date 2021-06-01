@@ -1,4 +1,4 @@
-// Import variable from models
+// Import variable from models subido
 let User = require("../models/user");
 // Variable to encrypt passwords
 let bcrypt = require("bcrypt-nodejs");
