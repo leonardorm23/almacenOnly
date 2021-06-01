@@ -26,10 +26,6 @@ mongoose.connect(
 );
 
 
-
-
-
-
 app.use((req, res, next) => {
   console.log(req);
   res.header("Content-Type: application/json");
