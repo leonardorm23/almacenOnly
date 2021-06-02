@@ -6,10 +6,12 @@ let User = require("../controllers/user");
 // Create the API
 let api = express.Router();
 
-// Create POST service (register) for http://Localhost:3001/
 api.post("/user/registerUser", User.registerUser);
-// Create Login service
 api.post("/login", User.login);
+api.get("/user", User.listUser);
+api.put("/user/editUser/:id", User.editUser);
+api.get("/user/:id", User.getUser);
+api.delete("/user/deleteUser/:id", User.deleteUser);
 
 // Export the module
 module.exports = api;

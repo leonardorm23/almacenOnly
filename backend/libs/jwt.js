@@ -7,6 +7,7 @@ exports.createToken = (user) => {
         _id: user._id,
         name: user.name,
         lastname: user.lastname,
+        age: user.age,
         email: user.email,
         role: user.role,
         address: user.address,

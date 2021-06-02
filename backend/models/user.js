@@ -10,6 +10,8 @@ let userSchema = Schema({
   email: String,
   pass: String,
   role: String,
+  address: String,
+  phoneNumber: String,
   dateRegistered: { type: Date, default: Date.now }
 });
 // Export the file

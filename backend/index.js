@@ -12,7 +12,7 @@ let User = require("./routes/user");
 
 mongoose.connect(
   "mongodb://localhost:27017/almacenonly",
-  { useUnifiedTopology: true, useNewUrlParser: true },
+  { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true},
   (err, res) => {
     if (err) {
       throw err;
