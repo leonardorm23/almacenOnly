@@ -1,8 +1,7 @@
 // Export the class
-export class User {
+export class Register {
     // Generate a constructor
     constructor(
-      public _id: String,
       public names: String,
       public lastName: String,
       public age: Number,
@@ -11,7 +10,6 @@ export class User {
       public role: String,
       public address: String,
       public phoneNumber: String,
-      public getToken: boolean
     ) {}
   }
   

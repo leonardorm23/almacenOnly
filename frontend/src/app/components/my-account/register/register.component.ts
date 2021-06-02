@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import { RegisterService } from 'src/app/services/register.service';
-import { User } from '../../../models/user';
+import { Register } from '../../../models/register';
+import { global } from '../../../services/GLOBAL';
 
 @Component({
   selector: 'app-register',
@@ -10,24 +11,73 @@ import { User } from '../../../models/user';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  public mensajeError : any;
+  public mensajeExito: any;
   public user: any;
+  public url: any;
 
-  constructor(private registerService: RegisterService, public forms: FormsModule, private router: Router) {
-    // Instance new user model
-    this.user = new User('', '', '', 0, '', '', '', true);
+  constructor(private registerService: RegisterService) {
+    
+    this.url = global.url;
+    this.user = new Register('', '', 0, '', '','', '', '');
   }
 
-  ngOnInit(): void {}
-  register(form: NgForm){
-    this.registerService.registerUser('').subscribe(
-      (response) => {
-        this.router.navigateByUrl('/home');
-        if(response['error']){
-          response['error'];
-          alert("Error: "+response);
-        }
-        console.log("Register User Response: ", response)
-      });
-      console.log(form);
+  ngOnInit(): void {  }
+
+
+  registerUser(userForm: any) {
+    // validamos que el formulario tenga los campos requeridos
+    if (userForm.valid) {
+      // enviamos los datos del formulario al metodo registrar curso
+      this.registerService
+        .registerUser({
+
+          names: userForm.value.names,
+          lastName: userForm.value.lastName,
+          age: userForm.value.age,
+          email: userForm.value.email,
+          pass: userForm.value.pass,
+          role: userForm.value.role,
+          address: userForm.value.address,
+          phoneNumber: userForm.value.phoneNumber,
+
+        })
+        .subscribe(
+          (response) => {
+            // mensaje de exito
+            this.mensajeExito = "usuario creado";
+            console.log(response);
+            //limpiamos todos los datos para que el formulario se limpie 
+            this.user = new Register("","",0,"","","","","");
+            // limpiamos el mensaje
+            this.cerrarError();
+          },
+            (error) => {
+            // mensaje de error
+            this.mensajeError = "Error al crear producto";
+            console.log("Error ", error);
+            //limpiamos todos los datos para que el formulario se limpie 
+            this.user = new Register("","",0,"","","","","");
+            
+            // limpiamos el mensaje
+            this.cerrarError();
+          }
+        );
+    } else {
+      // en caso tal que los datos del formulario no se envien o falten datos
+      this.mensajeError = "Favor llenar todos los datos";
+      console.log("Favor llenar todos los datos");
+       
+      this.cerrarError();
+      console.log("error en datos");
+    }
   }
+
+  cerrarError(){
+    setTimeout(() => {
+     this.mensajeError = '';
+     this.mensajeExito = '';
+    }, 2000);
+  }
+
 }

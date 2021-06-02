@@ -21,7 +21,7 @@ export class LoginService {
     // Assign backend url to global variable
     this.url = global.url;
     // Initialize user model
-    this.user = new User('', '', '', 0, '', '', '', false);
+    this.user = new User('', '', '', 0, '', '', '','', '',false);
   }
   // Login Method
   login(user: User, getToken = true): Observable<any> {

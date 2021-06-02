@@ -1,89 +1,192 @@
-<h3>Register User</h3>
-<form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-  <div class="form-content">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Your Name"
-            value=""
-            #names="ngModel"
-            name="names"
-            [(ngModel)]="user.names"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Last Name"
-            value=""
-            #lastName="ngModel"
-            name="lastName"
-            [(ngModel)]="user.lastName"
-            required
-          />
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+  <div class="container-fluid">
+    <div class="header">
+      <h1 class="header-title">Crear usuario</h1>
+    </div>
+    <div class="tab-content" id="myTabContent">
+      <div class="col-12 col-lg-12" *ngIf="mensajeExito">
+        <div class="alert alert-info alert-dismissible" role="alert">
+          <div class="alert-message">
+             {{ mensajeExito }} 
+          </div>
+ 
+          <button
+            type="button"
+            class="close"
+            (click)="cerrarError()"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">X</span>
+          </button>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <input
-            type="number"
-            class="form-control"
-            placeholder="Your Age"
-            value=""
-            #age="ngModel"
-            name="age"
-            [(ngModel)]="user.age"
-            required
-          />
+      <div class="tab-content" id="myTabContent">
+        <div class="col-12 col-lg-12" *ngIf="mensajeError">
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <div class="alert-message">
+              {{ mensajeError }}
+            </div>
+ 
+            <button
+              type="button"
+              class="close"
+              (click)="cerrarError()"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">X</span>
+            </button>
+          </div>
         </div>
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Your email"
-            value=""
-            #email="ngModel"
-            name="email"
-            [(ngModel)]="user.email"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Your Password"
-            value=""
-            #pass="ngModel"
-            name="pass"
-            [(ngModel)]="user.pass"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="role">Select Role</label>
-          <select
-            class="form-control"
-            #role="ngModel"
-            name="role"
-            [(ngModel)]="user.role"
-            required
-          >
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="dateReg">Please select Today's date</label>
-          <input type="date" class="form-control" name="dateReg" />
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="nav nav-tabs" id="myTab" role="tablist"></ul>
+ 
+          <form #userForm="ngForm" (ngSubmit)="registerUser(userForm)">
+            <div
+              class="tab-pane fade show active"
+              id="home"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+            >
+              <div class="card">
+                <div class="card-body">
+                  <div class="row mt-4">
+                    <div class="col-lg-8">
+                      <div class="row">
+                        <div class="col-lg-9 form-group">
+                          <label><b>Nombres</b></label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            autocomplete="new-text"
+                            placeholder="nombre"
+                            name="names"
+                            #names="ngModel"
+                            [(ngModel)]="user.names"
+                            required
+                          />
+                        </div>
+                        <div class="col-lg-9 form-group">
+                          <label><b>apellidos</b></label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            autocomplete="new-text"
+                            placeholder="apellidos"
+                            name="lastName"
+                            #lastName="ngModel"
+                            [(ngModel)]="user.lastName"
+                            required
+                          />
+                        </div>
+
+                        <div class="col-lg-9 form-group">
+                          <label><b>Edad</b></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            placeholder="edad"
+                            name="age"
+                            #age="ngModel"
+                            [(ngModel)]="user.age"
+                            required
+                          />
+                        </div>
+                       
+                        <div class="col-lg-9 form-group">
+                          <div class="form-group">
+                            <label class="form-label">correo</label>
+                            <input
+                            type="text"
+                            class="form-control"
+                            autocomplete="new-text"
+                            placeholder="correo"
+                            name="email"
+                            #email="ngModel"
+                            [(ngModel)]="user.email"
+                            required
+                          />
+                        </div>
+                          
+                         
+                        </div>
+                            
+                            
+                        <div class="col-lg-9 form-group">
+                          <label><b>contraseña </b></label>
+                          <input
+                            type="password"
+                            class="form-control"
+                            autocomplete="new-text"
+                            placeholder="contraseña "
+                            name="pass"
+                            #pass="ngModel"
+                            [(ngModel)]="user.pass"
+                            required
+                          />
+                        </div>
+
+                        
+                        
+                        <div class="col-lg-9 form-group">
+                          <label><b>rol</b></label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            autocomplete="new-text"
+                            placeholder="rol"
+                            name="role"
+                            #role="ngModel"
+                            [(ngModel)]="user.role"
+                            required
+                          />
+                        </div>
+                       <div class="col-lg-9 form-group">
+                          <label><b>dirección</b></label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            autocomplete="new-text"
+                            placeholder="dirección"
+                            name="address"
+                            #address="ngModel"
+                            [(ngModel)]="user.address"
+                            required
+                          />
+                        </div>
+                        <div class="col-lg-9 form-group">
+                          <label><b>telefono</b></label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            autocomplete="new-text"
+                            placeholder="telefono"
+                            name="phoneNumber"
+                            #phoneNumber="ngModel"
+                            [(ngModel)]="user.phoneNumber"
+                            required
+                          />
+                        </div>
+                                                
+                        <div class="col-lg-12 form-group">
+                          <button class="btn btn-primary btn-lg" type="submit">
+                            Crear 
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+          </form>
         </div>
       </div>
     </div>
-    <button type="submit" class="btnSubmit">Submit</button>
   </div>
-</form>
+</main>
