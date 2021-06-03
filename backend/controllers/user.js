@@ -115,12 +115,11 @@ const editUser = (req, res) => {
   let id = req.params["id"];
   // Obtenemos todos los parametos
   let params = req.body;
+  console.log(req.body)
   // Buscamos el Usuario para editarlo
   if (params.pass) {
     bcrypt.hash(params.pass, null, null, (err, hash) => {
-      if (hash) {
-        User.findByIdAndUpdate(
-          id,
+      if (hash) {User.findByIdAndUpdate(id,
           {  
         names : params.names,
         lastName : params.lastName,
@@ -135,7 +134,7 @@ const editUser = (req, res) => {
             if (userData) {
               res.status(200).send({ User: userData });
             } else {
-              res.status(500).send({ message: "El usuario no se pudo editar" });
+              res.status(501).send({ message: "El usuario no se pudo editar" });
             }
           }
         );

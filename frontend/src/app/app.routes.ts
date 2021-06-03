@@ -11,6 +11,8 @@ import { ListProductComponent } from './components/list-product/list-product.com
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { LoginComponent } from './components/my-account/login/login.component';
+import { ListUserComponent } from './components/list-user/list-user.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 
 
@@ -18,8 +20,7 @@ const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent  },
     { path: 'home', component: HomeComponent  },
     { path: 'store', component: StoreComponent  },
-    { path: 'dashboard', component: AdminDashboardComponent  },
-  
+    { path: 'dashboard', component: AdminDashboardComponent, },
     { path: 'aboutUs', component: AboutUsComponent  },
     { path: 'contact', component: ContactComponent  },
     { path: 'myAccount', component: MyAccountComponent  },
@@ -27,6 +28,8 @@ const APP_ROUTES: Routes = [
     { path: 'product', component: ListProductComponent  },
     { path: 'product/createproduct', component: CreateProductComponent  },
     { path: 'product/editproduct/:id', component: EditProductComponent  },
+    { path: 'user/listuser', component: ListUserComponent  },
+    { path: 'user/edituser/:id', component: EditUserComponent  },
     {path: 'login', component: LoginComponent},
 
     { path: '**', pathMatch: 'full', redirectTo: 'home' }

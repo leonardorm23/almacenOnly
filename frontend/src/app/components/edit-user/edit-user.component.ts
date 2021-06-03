@@ -1,83 +1,106 @@
 import { Component, OnInit } from '@angular/core';
-import {FormsModule, NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
-import { User } from '../../../models/user';
-import { global } from '../../../services/GLOBAL';
+import { ActivatedRoute } from '@angular/router';
+
+import { User } from '../../models/user';
+
+import { UserService } from '../../services/user.service';
+import { global } from '../../services/GLOBAL';
+
+
+interface HtmlInputEvent  extends Event {
+  target: HTMLInputElement & EventTarget;
+}
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class RegisterComponent implements OnInit {
-  public mensajeError : any;
-  public mensajeExito: any;
-  public user: any;
-  public url: any;
 
-  constructor(private registerService: UserService) {
-    
+export class EditUserComponent implements OnInit {
+
+  public user: any;
+  public id: any;
+  public url: any;
+  public mensajeExito: any;
+  public mensajeError: any;
+ 
+
+  constructor(private route: ActivatedRoute, private userService: UserService ) {
+
     this.url = global.url;
     this.user = new User('','', '', 0, '', '','', '', '',true);
+   }
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.id = params["id"];
+      console.log(this.id)
+      this.userService.getUserID(this.id).subscribe(
+        (response) => {
+          this.user = response.user; 
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    });
   }
 
-  ngOnInit(): void {  }
+  cerrarError() {
+    setTimeout(() => {
+      this.mensajeExito = "";
+      this.mensajeError = "";
+    }, 2000);
+  }
 
-
-  registerUser(userForm: any) {
+  ediUser(userForm: any) {
     // validamos que el formulario tenga los campos requeridos
     if (userForm.valid) {
       // enviamos los datos del formulario al metodo registrar curso
-      this.registerService
-        .registerUser({
-
+      this.userService
+        .editUser({
+          _id: this.id,
           names: userForm.value.names,
           lastName: userForm.value.lastName,
           age: userForm.value.age,
           email: userForm.value.email,
           pass: userForm.value.pass,
-          role: "USER",
+          role: userForm.value.role,
           address: userForm.value.address,
           phoneNumber: userForm.value.phoneNumber,
-
+          getToken: true,
+          
         })
         .subscribe(
           (response) => {
             // mensaje de exito
-            this.mensajeExito = "usuario creado";
+            this.mensajeExito = " se actualizo el usuario correctamente producto ";
             console.log(response);
             //limpiamos todos los datos para que el formulario se limpie 
             this.user = new User("","","",0,"","","","","",true);
+            
             // limpiamos el mensaje
             this.cerrarError();
           },
             (error) => {
             // mensaje de error
-            this.mensajeError = "Error al crear producto";
+            this.mensajeError = "Error al editar producto";
             console.log("Error ", error);
             //limpiamos todos los datos para que el formulario se limpie 
             this.user = new User("","","",0,"","","","","",true);
-            
+             
             // limpiamos el mensaje
             this.cerrarError();
           }
         );
     } else {
       // en caso tal que los datos del formulario no se envien o falten datos
-      this.mensajeError = "Favor llenar todos los datos";
+      this.mensajeError = "Datos incompletos";
       console.log("Favor llenar todos los datos");
-       
       this.cerrarError();
       console.log("error en datos");
     }
-  }
-
-  cerrarError(){
-    setTimeout(() => {
-     this.mensajeError = '';
-     this.mensajeExito = '';
-    }, 2000);
   }
 
 }
