@@ -117,17 +117,15 @@
                               
                               
                           <div class="col-lg-9 form-group">
-                            <label><b>contraseña </b></label>
+                            <label><b>Nueva contraseña </b></label>
                             <input
-                              type="text"
+                              type="password"
                               class="form-control"
-                              autocomplete="new-text"
-                              placeholder="contraseña "
+                              placeholder="escribe nueva contraseña"
                               name="pass"
                               #pass="ngModel"
-                              [(ngModel)]="user.pass"
-                              required
-                            />
+                              [(ngModel)]="user.passText"
+                            /> <!-- user.passText es una variable vacia para que no muestre nada -->
                           </div>
   
                           

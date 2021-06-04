@@ -24,6 +24,7 @@ export class EditUserComponent implements OnInit {
   public url: any;
   public mensajeExito: any;
   public mensajeError: any;
+  public pass = "";
  
 
   constructor(private route: ActivatedRoute, private userService: UserService ) {
@@ -78,7 +79,7 @@ export class EditUserComponent implements OnInit {
             this.mensajeExito = " se actualizo el usuario correctamente producto ";
             console.log(response);
             //limpiamos todos los datos para que el formulario se limpie 
-            this.user = new User("","","",0,"","","","","",true);
+            //this.user = new User("","","",0,"","","","","",true);
             
             // limpiamos el mensaje
             this.cerrarError();

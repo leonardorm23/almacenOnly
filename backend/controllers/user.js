@@ -66,7 +66,7 @@ const login = (req, res) => {
     if (err) {
       res.status(500).send({ message: "Server Error" });
     } else {
-      if (userData) {        
+      if (userData) {
         bcrypt.compare(params.pass, userData.pass, (err, confirm) => {
           if (confirm) {
             if (params.getToken) {
@@ -78,7 +78,9 @@ const login = (req, res) => {
               res.status(200).send({ User: userData, message: "No Token" });
             }
           } else {
-            res.status(401).send({ message: "aqui Email or Password incorrect" });
+            res
+              .status(401)
+              .send({ message: "aqui Email or Password incorrect" });
           }
         });
       } else {
@@ -115,20 +117,21 @@ const editUser = (req, res) => {
   let id = req.params["id"];
   // Obtenemos todos los parametos
   let params = req.body;
-  console.log(req.body)
   // Buscamos el Usuario para editarlo
   if (params.pass) {
     bcrypt.hash(params.pass, null, null, (err, hash) => {
-      if (hash) {User.findByIdAndUpdate(id,
-          {  
-        names : params.names,
-        lastName : params.lastName,
-        age : params.age,
-        email : params.email,
-        pass : hash,
-        role : params.role,
-        address : params.address,
-        phoneNumber : params.phoneNumber,
+      if (hash) {
+        User.findByIdAndUpdate(
+          id,
+          {
+            names: params.names,
+            lastName: params.lastName,
+            age: params.age,
+            email: params.email,
+            pass: hash,
+            role: params.role,
+            address: params.address,
+            phoneNumber: params.phoneNumber,
           },
           (err, userData) => {
             if (userData) {
@@ -141,7 +144,27 @@ const editUser = (req, res) => {
       }
     });
   } else {
-    res.status(500).send({ message: "Faltaron datos" });
+    {
+      User.findByIdAndUpdate(
+        id,
+        {
+          names: params.names,
+          lastName: params.lastName,
+          age: params.age,
+          email: params.email,
+          role: params.role,
+          address: params.address,
+          phoneNumber: params.phoneNumber,
+        },
+        (err, userData) => {
+          if (userData) {
+            res.status(200).send({ User: userData });
+          } else {
+            res.status(501).send({ message: "El usuario no se pudo editar" });
+          }
+        }
+      );
+    }
   }
 };
 
