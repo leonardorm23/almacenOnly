@@ -25,6 +25,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { LoginComponent } from './components/my-account/login/login.component';
 import { RegisterComponent } from './components/my-account/register/register.component';
+import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { RegisterComponent } from './components/my-account/register/register.com
     EditProductComponent,
     LoginComponent,
     RegisterComponent,
+    DetailProductComponent,
   ],
   imports: [
     BrowserModule,

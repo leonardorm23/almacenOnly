@@ -11,6 +11,7 @@ import { ListProductComponent } from './components/list-product/list-product.com
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { LoginComponent } from './components/my-account/login/login.component';
+import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
 
 
@@ -27,6 +28,7 @@ const APP_ROUTES: Routes = [
     { path: 'product', component: ListProductComponent  },
     { path: 'product/createproduct', component: CreateProductComponent  },
     { path: 'product/editproduct/:id', component: EditProductComponent  },
+    { path: 'detailproduct/:id', component: DetailProductComponent  },
     {path: 'login', component: LoginComponent},
 
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
