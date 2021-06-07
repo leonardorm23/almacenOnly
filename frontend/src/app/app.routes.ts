@@ -13,6 +13,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { LoginComponent } from './components/my-account/login/login.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
 
 
@@ -30,6 +31,7 @@ const APP_ROUTES: Routes = [
     { path: 'product/editproduct/:id', component: EditProductComponent  },
     { path: 'user/listuser', component: ListUserComponent  },
     { path: 'user/edituser/:id', component: EditUserComponent  },
+    { path: 'detailproduct/:id', component: DetailProductComponent  },
     {path: 'login', component: LoginComponent},
 
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
