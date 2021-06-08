@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http'; 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+//routes
+import { APP_ROUTING } from "./app.routes";
+
 import { AppComponent } from './app.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
@@ -12,6 +16,18 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { PayGateComponent } from './components/pay-gate/pay-gate.component';
 import { StoreComponent } from './components/store/store.component';
 import { UserClientComponent } from './components/user-client/user-client.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { CardProductComponent } from './components/card-product/card-product.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ListProductComponent } from './components/list-product/list-product.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { LoginComponent } from './components/my-account/login/login.component';
+import { RegisterComponent } from './components/my-account/register/register.component';
+import { ListUserComponent } from './components/list-user/list-user.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
 
 @NgModule({
@@ -26,11 +42,25 @@ import { UserClientComponent } from './components/user-client/user-client.compon
     PayGateComponent,
     StoreComponent,
     UserClientComponent,
-    
+    HeaderComponent,
+    FooterComponent,
+    CardProductComponent,
+    SidebarComponent,
+    ListProductComponent,
+    CreateProductComponent,
+    EditProductComponent,
+    LoginComponent,
+    RegisterComponent,
+    ListUserComponent,
+    EditUserComponent,
+    DetailProductComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    APP_ROUTING
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,7 +11,14 @@
 
 .btn-outline-success1 {
     color: #ce1a1a;
-    border-color: #ffffff;
+    border-color: #ddd5d5;
   }
 
-
+.container{
+    background-color: rgb(247, 242, 236);
+    border-radius: 10px;
+    
+}
+ a:hover{
+    
+ }

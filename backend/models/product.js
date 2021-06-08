@@ -5,14 +5,17 @@ let Schema = mongoose.Schema;
 
 // User Schema
 let productSchema = Schema({
-    names: String,
+    name: String,
     description: String,
-    image: Image,
+    image: String,
+    cost: Number,
     price: Number,
     color: String,
-    providerId: {type: Schema.ObjectId, ref: "provider"},
-    category: String,
+    idcategory: {type: Schema.ObjectId, ref: 'category'},
     type: String,
+    stock: Number,
+
 });
+    
 // Export the module
-modules.exports = mongoose.model("product", productSchema);
+module.exports = mongoose.model("product", productSchema);
