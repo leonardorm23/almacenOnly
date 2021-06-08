@@ -50,7 +50,7 @@
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     <li><a class="dropdown-item" [routerLink]="['/user/edituser/', item._id ]"  >Editar</a></li>
-                    <li><a class="dropdown-item"  [routerLink]="" >Eliminar</a></li>
+                    <li><a class="dropdown-item"  [routerLink]="['/user/listuser/' ]" (click)="deleteUser(item._id)" >Eliminar</a></li>
                   </ul>
                 </div>
               </div></td>
