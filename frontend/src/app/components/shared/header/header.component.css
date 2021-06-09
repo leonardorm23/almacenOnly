@@ -1,3 +1,8 @@
+*{
+    
+    padding-top: 0;
+}
+
 .search{
     display: flex;
     justify-content: flex-end;
@@ -15,8 +20,11 @@
   }
 
 .container{
-    background-color: rgb(247, 242, 236);
+    background-color: rgb(251, 251, 251);
     border-radius: 10px;
+    /* max-width: 100%; */
+    
+    
     
 }
  a:hover{
