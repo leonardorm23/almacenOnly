@@ -18,7 +18,7 @@ export class UserService {
   constructor(private http: HttpClient) { 
     this.url = global.url;
     // Inicializamos el modelo uusuario
-    this.user = new User('', '', '', 0,'' ,'' ,'' ,'' ,'' , false);
+    this.user = new User();
   }
 
   registerUser(data:any):Observable<any>{

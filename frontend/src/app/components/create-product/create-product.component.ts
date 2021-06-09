@@ -40,7 +40,7 @@ export class CreateProductComponent implements OnInit {
 
   constructor( private productService: ProductService  ) {
     this.url = global.url;
-    this.product = new Product('','','','',0,0,'','','',0);
+    this.product = new Product();
    }
 
    ngOnInit():void {

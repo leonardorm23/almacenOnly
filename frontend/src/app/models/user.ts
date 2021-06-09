@@ -2,16 +2,16 @@
 export class User {
     // Generate a constructor
     constructor(
-      public _id: String,
-      public names: String,
-      public lastName: String,
-      public age: Number,
-      public email: String,
-      public pass: String,
-      public role: String,
-      public address: String,
-      public phoneNumber: String,
-      public getToken: boolean
+      public _id: string = '',
+      public names: string = '',
+      public lastName: string = '',
+      public age: number = 0,
+      public email: string = '',
+      public pass: string = '',
+      public role: string = '',
+      public address: string = '',
+      public phoneNumber: string = '',
+      public getToken: boolean = false
     ) {}
   }
   

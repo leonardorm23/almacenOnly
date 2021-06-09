@@ -35,7 +35,7 @@ export class EditProductComponent implements OnInit {
   constructor( private route: ActivatedRoute, private productService: ProductService ) { 
                
         this.url = global.url;
-        this.product = new Product('','','','',0,0,'','','',0);
+        this.product = new Product();
     }
 
   ngOnInit(): void {
@@ -112,7 +112,7 @@ export class EditProductComponent implements OnInit {
             this.mensajeExito = " se actualizo el producto correctamente producto ";
             console.log(response);
             //limpiamos todos los datos para que el formulario se limpie 
-            this.product = new Product("","","","",0,0,"","","",0);
+            this.product = new Product();
             this.selecionarImg = "";
             // limpiamos el mensaje
             this.cerrarError();
@@ -122,7 +122,7 @@ export class EditProductComponent implements OnInit {
             this.mensajeError = "Error al editar producto";
             console.log("Error ", error);
             //limpiamos todos los datos para que el formulario se limpie 
-            this.product = new Product("","","","",0,0,"","","",0);
+            this.product = new Product();
             this.selecionarImg = "";
  
             // limpiamos el mensaje
