@@ -1,5 +1,5 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-  <div class="container-fluid">
+  <div class="container">
     <div class="header">
       <h1 class="header-title">Registrate</h1>
     </div>
@@ -54,15 +54,15 @@
               <div class="card">
                 <div class="card-body">
                   <div class="row mt-4">
-                    <div class="col-lg-8">
-                      <div class="row">
+                    <div class="container col-lg-8">
+                      <div class="container row">
                         <div class="col-lg-9 form-group">
                           <label><b>Nombres</b></label>
                           <input
                             type="text"
                             class="form-control"
                             autocomplete="new-text"
-                            placeholder="nombre"
+                            placeholder="Names"
                             name="names"
                             #names="ngModel"
                             [(ngModel)]="user.names"
@@ -70,12 +70,12 @@
                           />
                         </div>
                         <div class="col-lg-9 form-group">
-                          <label><b>apellidos</b></label>
+                          <label><b>Apellidos</b></label>
                           <input
                             type="text"
                             class="form-control"
                             autocomplete="new-text"
-                            placeholder="apellidos"
+                            placeholder="Apellidos"
                             name="lastName"
                             #lastName="ngModel"
                             [(ngModel)]="user.lastName"
@@ -88,7 +88,7 @@
                           <input
                             type="number"
                             class="form-control"
-                            placeholder="edad"
+                            placeholder="Ingrese su Edad"
                             name="age"
                             #age="ngModel"
                             [(ngModel)]="user.age"
@@ -98,12 +98,12 @@
                        
                         <div class="col-lg-9 form-group">
                           <div class="form-group">
-                            <label class="form-label">correo</label>
+                            <label class="form-label"><b>Email</b></label>
                             <input
                             type="text"
                             class="form-control"
                             autocomplete="new-text"
-                            placeholder="correo"
+                            placeholder="Email"
                             name="email"
                             #email="ngModel"
                             [(ngModel)]="user.email"
@@ -116,12 +116,12 @@
                             
                             
                         <div class="col-lg-9 form-group">
-                          <label><b>contraseña </b></label>
+                          <label><b>Contraseña</b></label>
                           <input
                             type="password"
                             class="form-control"
                             autocomplete="new-text"
-                            placeholder="contraseña "
+                            placeholder="Contraseña "
                             name="pass"
                             #pass="ngModel"
                             [(ngModel)]="user.pass"
@@ -145,12 +145,12 @@
                           />
                         </div> -->
                        <div class="col-lg-9 form-group">
-                          <label><b>dirección</b></label>
+                          <label><b>Dirección</b></label>
                           <input
                             type="text"
                             class="form-control"
                             autocomplete="new-text"
-                            placeholder="dirección"
+                            placeholder="Dirección de residencia"
                             name="address"
                             #address="ngModel"
                             [(ngModel)]="user.address"
@@ -158,12 +158,12 @@
                           />
                         </div>
                         <div class="col-lg-9 form-group">
-                          <label><b>telefono</b></label>
+                          <label><b>Telefono</b></label>
                           <input
                             type="text"
                             class="form-control"
                             autocomplete="new-text"
-                            placeholder="telefono"
+                            placeholder="Telefono"
                             name="phoneNumber"
                             #phoneNumber="ngModel"
                             [(ngModel)]="user.phoneNumber"
@@ -171,12 +171,12 @@
                           />
                         </div>
                                                 
-                        <div class="col-lg-12 form-group">
-                          <button class="btn btn-primary btn-lg" type="submit">
+                        <div class="col-lg-12 form-group padTop">
+                          <button class="btn btn-primary btn-lg btnSubmit" type="submit">
                             Crear 
                           </button>
                         </div>
-                        <div><a  [routerLink]="['/login/' ]">ya tengo cuenta</a></div>
+                        <div class="padTop"><a  [routerLink]="['/login/' ]">Cuenta existente</a></div>
                       </div>
                     </div>
                     

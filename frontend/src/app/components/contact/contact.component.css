@@ -2,6 +2,8 @@
     padding: 0;
     margin: 0;
 }
-.leftPad {
-    padding-left: 5rem;
+.customPad {
+    padding-left: 6rem;
+    padding-right: 6rem;
+    padding-top: 2rem;
 }
