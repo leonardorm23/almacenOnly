@@ -14,6 +14,7 @@ import { LoginComponent } from './components/my-account/login/login.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
+import { RegisterComponent } from './components/my-account/register/register.component';
 
 
 
@@ -33,6 +34,7 @@ const APP_ROUTES: Routes = [
     { path: 'user/edituser/:id', component: EditUserComponent  },
     { path: 'detailproduct/:id', component: DetailProductComponent  },
     {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent},
 
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

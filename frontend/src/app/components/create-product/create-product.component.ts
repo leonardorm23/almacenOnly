@@ -10,14 +10,6 @@ interface HtmlInputEvent  extends Event {
   target: HTMLInputElement & EventTarget;
 }
      
-
-
-
-
-
-
-
-
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',

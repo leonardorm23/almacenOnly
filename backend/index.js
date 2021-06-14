@@ -4,6 +4,8 @@ let mongoose = require("mongoose");
 
 let port = process.env.PORT || 3001;
 
+let urlConnet = "mongodb+srv://mavallejos93:1234@bit.npuyx.mongodb.net/almacenesOnly?retryWrites=true&w=majority"
+
 let app = express();
 
 let Product = require("./routes/product");
@@ -11,7 +13,7 @@ let Category = require("./routes/category");
 let User = require("./routes/user");
 
 mongoose.connect(
-  "mongodb://localhost:27017/almacenonly",
+  urlConnet,
   { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true},
   (err, res) => {
     if (err) {
@@ -24,6 +26,10 @@ mongoose.connect(
     }
   }
 );
+
+mongoose.connection.on('connected', () => {
+  console.log("mongo atlas");
+});
 
 
 app.use(bodyParser.urlencoded({ extended: true }));

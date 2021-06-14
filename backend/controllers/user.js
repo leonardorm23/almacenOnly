@@ -80,7 +80,7 @@ const login = (req, res) => {
           } else {
             res
               .status(401)
-              .send({ message: "aqui Email or Password incorrect" });
+              .send({ message: "Email or Password incorrect" });
           }
         });
       } else {
