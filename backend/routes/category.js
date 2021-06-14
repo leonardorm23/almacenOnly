@@ -14,5 +14,5 @@ api.post("/category/:title?", Category.listaCategory);
 api.put("/category/editarCategory/:id", Category.editarCategory);
 api.delete("/category/eliminarCategory/:id", Category.eliminarCategory);
 
-// Exportamos el modulo
+// Exportamos el modulocategory/registrarCategory
 module.exports = api;
