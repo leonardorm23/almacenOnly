@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   constructor(private registerService: UserService) {
     
     this.url = global.url;
-    this.user = new User('','', '', 0, '', '','', '', '',true);
+    this.user = new User();
   }
 
   ngOnInit(): void {  }
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
             this.mensajeExito = "usuario creado";
             console.log(response);
             //limpiamos todos los datos para que el formulario se limpie 
-            this.user = new User("","","",0,"","","","","",true);
+            this.user = new User();
             // limpiamos el mensaje
             this.cerrarError();
           },
@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
             this.mensajeError = "Error al crear producto";
             console.log("Error ", error);
             //limpiamos todos los datos para que el formulario se limpie 
-            this.user = new User("","","",0,"","","","","",true);
+            this.user = new User();
             
             // limpiamos el mensaje
             this.cerrarError();

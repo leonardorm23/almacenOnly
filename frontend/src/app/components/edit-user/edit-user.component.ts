@@ -30,7 +30,7 @@ export class EditUserComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userService: UserService ) {
 
     this.url = global.url;
-    this.user = new User('','', '', 0, '', '','', '', '',true);
+    this.user = new User();
    }
 
   ngOnInit(): void {
@@ -89,7 +89,7 @@ export class EditUserComponent implements OnInit {
             this.mensajeError = "Error al editar producto";
             console.log("Error ", error);
             //limpiamos todos los datos para que el formulario se limpie 
-            this.user = new User("","","",0,"","","","","",true);
+            this.user = new User();
              
             // limpiamos el mensaje
             this.cerrarError();
