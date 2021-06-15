@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { global } from '../../services/GLOBAL';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -11,24 +12,31 @@ import Swal from 'sweetalert2'
 export class ListUserComponent implements OnInit {
 
   public  user: any;
- 
   public url: any;
+  public identity:any;
 
-  constructor(private userService: UserService) {
+    constructor(private userService: UserService, private router : Router) {
     this.url = global.url;
+    this.identity = userService.getIdentity();
    }
 
   ngOnInit(): void {
-    this.userService.getUser('').subscribe(
-      (response) => {
-        this.user = response.user;
-        console.log(this.user)
-        
-      },
-      (error) => {
-        console.log(error);
-      }
-    ) 
+    if(this.identity.role == 'ADMIN'){
+      this.userService.getUser('').subscribe(
+        (response) => {
+          this.user = response.user;
+          console.log(this.user)
+          
+        },
+        (error) => {
+          console.log(error);
+        }
+      ) 
+   }else{
+      this.router.navigate(['dashboard']);
+    }
+
+    
   }
 
   deleteUser(id: any){

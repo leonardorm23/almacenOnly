@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService } from '../../services/product.service';
 import { global } from '../../services/GLOBAL';
+
+import { UserService } from '../../services/user.service';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-product',
@@ -13,12 +16,17 @@ export class ListProductComponent implements OnInit {
   public  product: any;
  
   public url: any;
+  
+  public identity:any;
 
-  constructor( private productService: ProductService  ) {
+  constructor( private productService: ProductService, private userService: UserService, private router : Router, ) {
     this.url = global.url;
+    this.identity = userService.getIdentity();
    }
 
   ngOnInit(): void {
+    if(this.identity.role == 'ADMIN'){
+    
     this.productService.listaProduct('').subscribe(
       (response) => {
         this.product = response.product;
@@ -28,7 +36,9 @@ export class ListProductComponent implements OnInit {
       (error) => {
         console.log(error);
       }
-    ) 
+    ) }else{
+      this.router.navigate(['dashboard']);
+    }
   }
 
  

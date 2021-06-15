@@ -13,7 +13,7 @@ export class UserService {
   public user: any;
    // creamos variables token e identity
    public token: any;
-   public identity: any;
+   public identity:any;
 
   constructor(private http: HttpClient) { 
     this.url = global.url;
@@ -86,13 +86,16 @@ export class UserService {
   }
 
   // Metodo para los datos del usuario
-  getIdentity(): Observable<any> {
-    let identity = localStorage.getItem('identity');
-    if (identity) {
+  getIdentity():Observable<any>{
+    let identity = JSON.parse(localStorage.getItem('identity') || '{}');
+    /* this.identity = JSON.parse(localStorage.getItem('identity') || '{}'); */
+
+    if(identity){
       this.identity = identity;
-    } else {
+    }else{
       this.identity = false;
     }
+
     return this.identity;
   }
 

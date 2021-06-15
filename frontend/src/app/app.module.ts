@@ -28,6 +28,8 @@ import { RegisterComponent } from './components/my-account/register/register.com
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
+import { AuthGuard } from './auth.guard';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -54,6 +56,7 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
     ListUserComponent,
     EditUserComponent,
     DetailProductComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,9 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
     FormsModule,
     APP_ROUTING
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

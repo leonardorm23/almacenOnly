@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Product } from '../../models/product';
 
 import {ProductService } from '../../services/product.service';
 import { global } from '../../services/GLOBAL';
+import { UserService } from 'src/app/services/user.service';
 
 interface HtmlInputEvent  extends Event {
   target: HTMLInputElement & EventTarget;
@@ -30,15 +31,18 @@ export class EditProductComponent implements OnInit {
    public mensajeExito: any;
    public mensajeError: any;
    public imgSelect:any;
+   public identity:any;
   // public stock: any;
 
-  constructor( private route: ActivatedRoute, private productService: ProductService ) { 
+  constructor( private route: ActivatedRoute,private userService: UserService, private productService: ProductService, private router : Router, ) { 
                
         this.url = global.url;
+        this.identity = userService.getIdentity();
         this.product = new Product();
     }
 
   ngOnInit(): void {
+    if(this.identity.role == 'ADMIN'){
     this.route.params.subscribe((params) => {
       this.id = params["id"];
       console.log(this.id)
@@ -60,7 +64,10 @@ export class EditProductComponent implements OnInit {
        (error)=>{
          console.log(error);
        }
-     );
+     );}
+     else{
+      this.router.navigate(['dashboard']);
+    }
   }
 
   // Metodo para seleccionar la imagen a subir

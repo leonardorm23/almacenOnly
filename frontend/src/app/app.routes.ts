@@ -15,26 +15,29 @@ import { ListUserComponent } from './components/list-user/list-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
 import { RegisterComponent } from './components/my-account/register/register.component';
+import { ProfileComponent } from "./components/profile/profile.component";
+import { AuthGuard } from './auth.guard';
 
 
 
 const APP_ROUTES: Routes = [
-    { path: '', component: HomeComponent  },
-    { path: 'home', component: HomeComponent  },
-    { path: 'store', component: StoreComponent  },
-    { path: 'dashboard', component: AdminDashboardComponent, },
-    { path: 'aboutUs', component: AboutUsComponent  },
-    { path: 'contact', component: ContactComponent  },
-    { path: 'myAccount', component: MyAccountComponent  },
-    { path: 'cart', component: CartComponent  },
-    { path: 'product', component: ListProductComponent  },
-    { path: 'product/createproduct', component: CreateProductComponent  },
-    { path: 'product/editproduct/:id', component: EditProductComponent  },
-    { path: 'user/listuser', component: ListUserComponent  },
-    { path: 'user/edituser/:id', component: EditUserComponent  },
-    { path: 'detailproduct/:id', component: DetailProductComponent  },
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'home', component: HomeComponent},
+    { path: 'store', component: StoreComponent},
+    { path: 'dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard]},
+    { path: 'aboutUs', component: AboutUsComponent},
+    { path: 'contact', component: ContactComponent},
+    { path: 'myAccount', component: MyAccountComponent, canActivate: [AuthGuard]},
+    { path: 'cart', component: CartComponent},
+    { path: 'product', component: ListProductComponent, canActivate: [AuthGuard]},
+    { path: 'product/createproduct', component: CreateProductComponent, canActivate: [AuthGuard]},
+    { path: 'product/editproduct/:id', component: EditProductComponent, canActivate: [AuthGuard]},
+    { path: 'user/listuser', component: ListUserComponent, canActivate: [AuthGuard]},
+    { path: 'user/edituser/:id', component: EditUserComponent, canActivate: [AuthGuard]},
+    { path: 'detailproduct/:id', component: DetailProductComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
+    {path: 'profile', component: ProfileComponent},
 
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

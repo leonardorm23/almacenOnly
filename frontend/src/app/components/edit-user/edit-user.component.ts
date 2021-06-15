@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { User } from '../../models/user';
 
@@ -25,18 +25,22 @@ export class EditUserComponent implements OnInit {
   public mensajeExito: any;
   public mensajeError: any;
   public pass = "";
+  public identity:any;
  
 
-  constructor(private route: ActivatedRoute, private userService: UserService ) {
+  constructor(private route: ActivatedRoute, private userService: UserService, private router : Router, ) {
 
     this.url = global.url;
+    this.identity = userService.getIdentity();
     this.user = new User();
    }
 
   ngOnInit(): void {
+    
+    let id = this.identity._id;
     this.route.params.subscribe((params) => {
-      this.id = params["id"];
-      console.log(this.id)
+      this.id = id;
+      console.log(this.id )
       this.userService.getUserID(this.id).subscribe(
         (response) => {
           this.user = response.user; 
@@ -46,6 +50,7 @@ export class EditUserComponent implements OnInit {
         }
       );
     });
+  
   }
 
   cerrarError() {

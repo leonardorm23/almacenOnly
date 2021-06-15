@@ -3,6 +3,8 @@ import { Product } from '../../models/product';
 
 import {ProductService } from '../../services/product.service';
 import { global } from '../../services/GLOBAL';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 
 
@@ -29,13 +31,16 @@ export class CreateProductComponent implements OnInit {
   public  product: any;
  
   public url: any;
+  public identity: any;
 
-  constructor( private productService: ProductService  ) {
+  constructor( private route: ActivatedRoute, private userService: UserService, private productService: ProductService, private router : Router,  ) {
     this.url = global.url;
+    this.identity = userService.getIdentity();
     this.product = new Product();
    }
 
    ngOnInit():void {
+    if(this.identity.role == 'ADMIN'){
 
     this.productService.getCategory().subscribe(
      ( response)=>{
@@ -45,7 +50,10 @@ export class CreateProductComponent implements OnInit {
       (error)=>{
         console.log(error);
       }
-    );
+    );}
+    else{
+     this.router.navigate(['dashboard']);
+   }
   }
 
         

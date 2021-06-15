@@ -128,20 +128,22 @@
                             /> <!-- user.passText es una variable vacia para que no muestre nada -->
                           </div>
   
+                         
                           
-                          
-                         <div class="col-lg-9 form-group">
+                         <div class="col-lg-9 form-group" *ngIf="identity.role == 'ADMIN'">
                             <label><b>rol</b></label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              autocomplete="new-text"
-                              placeholder="rol"
-                              name="role"
-                              #role="ngModel"
-                              [(ngModel)]="user.role"
-                              required
-                            />
+                            <select class="form-select" aria-label="Default select example"type="text"
+                            class="form-control"
+                            autocomplete="new-text"
+                            placeholder="rol"
+                            name="role"
+                            #role="ngModel"
+                            [(ngModel)]="user.role"
+                            required>
+                              <option selected>Seleccionar</option>
+                              <option value="ADMIN">ADMIN</option>
+                              <option value="USER">USER</option>
+                            </select>
                           </div>
                          <div class="col-lg-9 form-group">
                             <label><b>dirección</b></label>
@@ -172,10 +174,9 @@
                                                   
                           <div class="col-lg-12 form-group">
                             <button class="btn btn-primary btn-lg" type="submit">
-                              Crear 
+                              Actualizar 
                             </button>
                           </div>
-                          <div><a href="">ya tengo cuenta</a></div>
                         </div>
                       </div>
                       

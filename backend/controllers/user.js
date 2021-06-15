@@ -72,7 +72,7 @@ const login = (req, res) => {
             if (params.getToken) {
               res.status(200).send({
                 jwt: jwt.createToken(userData),
-                //user: userData,
+                user: userData,
               });
             } else {
               res.status(200).send({ User: userData, message: "No Token" });
