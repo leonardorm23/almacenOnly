@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
           age: userForm.value.age,
           email: userForm.value.email,
           pass: userForm.value.pass,
-          role: "ADMIN",
+          role: "USER",
           address: userForm.value.address,
           phoneNumber: userForm.value.phoneNumber,
 
