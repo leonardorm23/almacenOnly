@@ -39,7 +39,7 @@ export class EditUserComponent implements OnInit {
     
     let id = this.identity._id;
     this.route.params.subscribe((params) => {
-      this.id = id;
+      this.id = params["id"];
       console.log(this.id )
       this.userService.getUserID(this.id).subscribe(
         (response) => {
@@ -81,7 +81,7 @@ export class EditUserComponent implements OnInit {
         .subscribe(
           (response) => {
             // mensaje de exito
-            this.mensajeExito = " se actualizo el usuario correctamente producto ";
+            this.mensajeExito = " se actualizo el usuario correctamente";
             console.log(response);
             //limpiamos todos los datos para que el formulario se limpie 
             //this.user = new User("","","",0,"","","","","",true);
@@ -91,7 +91,7 @@ export class EditUserComponent implements OnInit {
           },
             (error) => {
             // mensaje de error
-            this.mensajeError = "Error al editar producto";
+            this.mensajeError = "Error al editar usuario";
             console.log("Error ", error);
             //limpiamos todos los datos para que el formulario se limpie 
             this.user = new User();

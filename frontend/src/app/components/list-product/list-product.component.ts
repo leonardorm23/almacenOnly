@@ -17,7 +17,7 @@ export class ListProductComponent implements OnInit {
  
   public url: any;
   
-  public identity:any;
+  public identity: any;
 
   constructor( private productService: ProductService, private userService: UserService, private router : Router, ) {
     this.url = global.url;
